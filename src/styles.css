@@ -1,0 +1,105 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — "Tiket B booth": warm paper surfaces, ink typography,
+ * punched-ticket details. Motor = amber, Mobil = sky.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-motor: var(--motor);
+  --color-motor-foreground: var(--motor-foreground);
+  --color-mobil: var(--mobil);
+  --color-mobil-foreground: var(--mobil-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.968 0.014 92);
+  --foreground: oklch(0.235 0.03 255);
+  --card: oklch(0.993 0.006 95);
+  --card-foreground: oklch(0.235 0.03 255);
+  --popover: oklch(0.993 0.006 95);
+  --popover-foreground: oklch(0.235 0.03 255);
+  --primary: oklch(0.26 0.045 255);
+  --primary-foreground: oklch(0.975 0.008 95);
+  --secondary: oklch(0.93 0.016 92);
+  --secondary-foreground: oklch(0.26 0.045 255);
+  --muted: oklch(0.93 0.016 92);
+  --muted-foreground: oklch(0.5 0.025 255);
+  --accent: oklch(0.93 0.016 92);
+  --accent-foreground: oklch(0.26 0.045 255);
+  --destructive: oklch(0.577 0.215 27);
+  --destructive-foreground: oklch(0.985 0.005 95);
+  --border: oklch(0.878 0.018 92);
+  --input: oklch(0.878 0.018 92);
+  --ring: oklch(0.6 0.05 255);
+  --motor: oklch(0.845 0.135 84);
+  --motor-foreground: oklch(0.3 0.06 70);
+  --mobil: oklch(0.78 0.095 235);
+  --mobil-foreground: oklch(0.24 0.05 250);
+  --success: oklch(0.62 0.13 158);
+  --success-foreground: oklch(0.985 0.005 95);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+}
+
+/* Punched ticket edge (side notches) */
+@utility ticket-notch {
+  -webkit-mask:
+    radial-gradient(circle 8px at 0 50%, transparent 96%, #000 100%) left / 50.5% 100% no-repeat,
+    radial-gradient(circle 8px at 100% 50%, transparent 96%, #000 100%) right / 50% 100% no-repeat;
+  mask:
+    radial-gradient(circle 8px at 0 50%, transparent 96%, #000 100%) left / 50.5% 100% no-repeat,
+    radial-gradient(circle 8px at 100% 50%, transparent 96%, #000 100%) right / 50% 100% no-repeat;
+}
+
+/* Dashed tear line */
+@utility tear {
+  background-image: linear-gradient(to right, var(--color-border) 55%, transparent 45%);
+  background-size: 12px 1px;
+  background-repeat: repeat-x;
+  height: 1px;
+}
